@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>The Real Christian Clothing Part 6: Forbearance</title>
+        <style>
+            :root {
+                --primary-color: #3a5a78;
+                --secondary-color: #f3f7f9;
+                --accent-color: #e6b32a;
+                --text-color: #333;
+                --light-text: #fff;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            body {
+                background-color: var(--secondary-color);
+                color: var(--text-color);
+                line-height: 1.6;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 0 15px;
+                margin: 0 auto;
+            }
+
+            header {
+                background-color: var(--primary-color);
+                color: var(--light-text);
+                text-align: center;
+                padding: 1.5rem 0;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            h1 {
+                font-size: 1.8rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .memory-verse {
+                font-style: italic;
+                background-color: rgba(255, 255, 255, 0.2);
+                padding: 1rem;
+                border-radius: 10px;
+                margin-top: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .text-reference {
+                margin-top: 0.5rem;
+                font-weight: bold;
+            }
+
+            .tab-container {
+                margin-top: 1rem;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            .tabs {
+                display: flex;
+                background-color: var(--primary-color);
+            }
+
+            .tab {
+                flex: 1;
+                padding: 0.8rem 0.5rem;
+                text-align: center;
+                color: var(--light-text);
+                font-weight: 600;
+                cursor: pointer;
+                border-bottom: 3px solid transparent;
+                font-size: 0.9rem;
+                transition: all 0.3s ease;
+            }
+
+            .tab.active {
+                background-color: rgba(255, 255, 255, 0.1);
+                border-bottom: 3px solid var(--accent-color);
+            }
+
+            .tab:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .content {
+                display: none;
+                padding: 1.2rem;
+                background-color: #fff;
+                border-radius: 0 0 8px 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .content.active {
+                display: block;
+                animation: fadeIn 0.5s ease;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+
+            h2 {
+                color: var(--primary-color);
+                margin-bottom: 1rem;
+                font-size: 1.4rem;
+            }
+
+            p {
+                margin-bottom: 1rem;
+                font-size: 1rem;
+            }
+
+            .scripture {
+                background-color: var(--secondary-color);
+                padding: 1rem;
+                border-left: 4px solid var(--accent-color);
+                margin: 1rem 0;
+                border-radius: 0 8px 8px 0;
+            }
+
+            ol {
+                padding-left: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            li {
+                margin-bottom: 0.8rem;
+            }
+
+            .scripture-reference {
+                font-weight: bold;
+                color: var(--primary-color);
+            }
+
+            button.read-scripture {
+                background-color: var(--accent-color);
+                color: var(--text-color);
+                border: none;
+                padding: 0.5rem 1rem;
+                border-radius: 4px;
+                cursor: pointer;
+                font-weight: 600;
+                margin: 0.3rem 0;
+                transition: background-color 0.3s ease;
+            }
+
+            button.read-scripture:hover {
+                background-color: #d4a325;
+            }
+
+            .scripture-modal {
+                display: none;
+                position: fixed;
+                z-index: 100;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.7);
+                overflow: auto;
+            }
+
+            .scripture-content {
+                background-color: #fff;
+                margin: 15% auto;
+                padding: 1.5rem;
+                width: 90%;
+                max-width: 500px;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                position: relative;
+            }
+
+            .close-modal {
+                position: absolute;
+                top: 0.8rem;
+                right: 1rem;
+                color: #aaa;
+                font-size: 1.5rem;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .close-modal:hover {
+                color: #333;
+            }
+
+            .quiz-container {
+                background-color: #fff;
+                padding: 1.2rem;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                margin-top: 2rem;
+            }
+
+            .question {
+                margin-bottom: 1.5rem;
+            }
+
+            .options {
+                margin-top: 0.5rem;
+            }
+
+            .option {
+                display: block;
+                padding: 0.8rem;
+                margin-bottom: 0.5rem;
+                background-color: var(--secondary-color);
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .option:hover {
+                background-color: #e0e8ed;
+            }
+
+            .option.selected {
+                background-color: var(--primary-color);
+                color: white;
+            }
+
+            .submit-quiz {
+                background-color: var(--accent-color);
+                color: var(--text-color);
+                border: none;
+                padding: 0.8rem 1.5rem;
+                border-radius: 4px;
+                cursor: pointer;
+                font-weight: 600;
+                display: block;
+                margin: 1.5rem auto 0;
+                width: 100%;
+                max-width: 200px;
+                transition: background-color 0.3s ease;
+            }
+
+            .submit-quiz:hover {
+                background-color: #d4a325;
+            }
+
+            .quiz-result {
+                text-align: center;
+                margin-top: 1.5rem;
+                padding: 1rem;
+                border-radius: 8px;
+                font-weight: 600;
+                display: none;
+            }
+
+            .interactive-section {
+                margin-top: 1.5rem;
+            }
+
+            .reflection-input {
+                width: 100%;
+                height: 100px;
+                padding: 0.8rem;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                resize: vertical;
+                font-family: inherit;
+                margin-bottom: 1rem;
+            }
+
+            .save-reflection {
+                background-color: var(--primary-color);
+                color: white;
+                border: none;
+                padding: 0.8rem 1.5rem;
+                border-radius: 4px;
+                cursor: pointer;
+                font-weight: 600;
+                transition: background-color 0.3s ease;
+            }
+
+            .save-reflection:hover {
+                background-color: #2c4559;
+            }
+
+            .saved-message {
+                color: green;
+                margin-top: 0.5rem;
+                display: none;
+            }
+
+            .prayer-points {
+                margin-top: 1.5rem;
+            }
+
+            footer {
+                text-align: center;
+                padding: 1.5rem 0;
+                margin-top: 2rem;
+                background-color: var(--primary-color);
+                color: var(--light-text);
+                font-size: 0.8rem;
+            }
+
+            @media (min-width: 768px) {
+                .container {
+                    max-width: 750px;
+                }
+
+                h1 {
+                    font-size: 2.2rem;
+                }
+
+                .memory-verse {
+                    font-size: 1rem;
+                }
+
+                .tab {
+                    font-size: 1rem;
+                }
+
+                .scripture-content {
+                    margin: 10% auto;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1>THE REAL CHRISTIAN CLOTHING PART 6</h1>
+                <div class="memory-verse">
+                    MEMORY VERSE: "BY LONG FORBEARING IS A PRINCE PERSUADED AND
+                    A SOFT TONGUE BREAKETH THE BONE" - PROVERBS 25:15
+                </div>
+                <div class="text-reference">TEXT: COLOSSIANS 3:12-14</div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="tab-container">
+                <div class="tabs">
+                    <div class="tab active" data-tab="introduction">
+                        Introduction
+                    </div>
+                    <div class="tab" data-tab="lesson">Lesson</div>
+                    <div class="tab" data-tab="application">Application</div>
+                    <div class="tab" data-tab="quiz">Quiz</div>
+                </div>
+
+                <div class="content active" id="introduction">
+                    <h2>INTRODUCTION</h2>
+                    <p>
+                        THE FACT THAT THE STATUS OF A MAN CHANGES WITH THE LEVEL
+                        OF POSITION HE ATTAINS IS TRUE AS IT IS PICTURED FROM
+                        OUR TEXT IN 2 COR. 5:17.
+                    </p>
+
+                    <div class="scripture">
+                        <span class="scripture-reference"
+                            >2 Corinthians 5:17</span
+                        >
+                        - "Therefore if any man be in Christ, he is a new
+                        creature: old things are passed away; behold, all things
+                        are become new."
+                    </div>
+
+                    <p>
+                        WHEN YOU WERE A CHILD, YOU THOUGHT LIKE ONE BUT WHEN YOU
+                        BECOME AN ADULT, YOU REASON AS ONE - 1 COR. 13:11.
+                    </p>
+
+                    <button
+                        class="read-scripture"
+                        data-ref="1 Corinthians 13:11"
+                    >
+                        Read 1 Cor. 13:11
+                    </button>
+
+                    <p>
+                        ANYTHING SHORT OF THESE WILL AROUSE THE INTEREST OF
+                        PEOPLE TO ASCERTAIN YOUR SANITY. IF YOU ARE A NEW
+                        CREATURE THEN BRING FORTH FRUIT AS A PROOF - MATT 3:8.
+                    </p>
+
+                    <button class="read-scripture" data-ref="Matthew 3:8">
+                        Read Matt. 3:8
+                    </button>
+
+                    <h2>AIMS AND OBJECTIVES</h2>
+                    <p>
+                        <strong>AIM:</strong> TO DRAW THE ATTENTION OF
+                        CHRISTIANS TO THE NEED OF CHANGE OF CHARACTER.
+                    </p>
+                    <p>
+                        <strong>OBJECTIVE:</strong> THAT THE CHILD OF GOD MAY BE
+                        KNOWN BY DEED AND NOT BY WORDS.
+                    </p>
+                </div>
+
+                <div class="content" id="lesson">
+                    <h2>TEXT REVIEW/LESSON</h2>
+                    <p>
+                        GOD SAID THAT YOU ARE A NEW CREATURE AND BEING WHO YOU
+                        ARE, YOU ARE REQUIRED TO LIVE IN THE NEW STYLE OF LIFE
+                        AND NOT THE FORMER (GAL 5:25).
+                    </p>
+
+                    <button class="read-scripture" data-ref="Galatians 5:25">
+                        Read Gal. 5:25
+                    </button>
+
+                    <p>
+                        IN OUR LAST STUDY WE LEARNED ABOUT LONG SUFFERING BUT
+                        TODAY WE WILL X-RAY FORBEARANCE.
+                    </p>
+
+                    <h2>BOWELS OF FORBEARANCE</h2>
+                    <p>
+                        ANOTHER WORD FOR FORBEARANCE IS TOLERANCE. IT MEANS TO
+                        ACCEPT AN UNPLEASANT PERSON WITHOUT COMPLAINING OR TO
+                        ALLOW SOMEBODY TO DO SOMETHING THAT YOU DO NOT LIKE.
+                    </p>
+
+                    <p>
+                        IT ALSO MEANS TO OVERLOOK OR TO ABSORB PAIN CAUSED BY
+                        SOMEONE AS THOUGH IT HAS NO EFFECT. GOD TOLERATES US SO
+                        MUCH AND HE WANTS US TO HAVE THE SAME ATTRIBUTES ON YOUR
+                        SPIRIT MAN WHICH SHOULD MANIFEST SINCE YOU ARE HIS
+                        IMAGE.
+                    </p>
+
+                    <p>
+                        HAB 1:13 SAYS GOD CAN'T LOOK AT EVIL YET FOR OUR SINS
+                        JESUS DIED WHILE WE WERE STILL SINNERS - ROM 5:8 AND HE
+                        KEPT ABSORBING OUR EXCESSES UNTIL WE SURRENDER TO HIM -
+                        REV 3:20
+                    </p>
+
+                    <button class="read-scripture" data-ref="Habakkuk 1:13">
+                        Read Hab. 1:13
+                    </button>
+                    <button class="read-scripture" data-ref="Romans 5:8">
+                        Read Rom. 5:8
+                    </button>
+                    <button class="read-scripture" data-ref="Revelation 3:20">
+                        Read Rev. 3:20
+                    </button>
+
+                    <h2>THE NECESSITY FOR FORBEARANCE</h2>
+                    <ol>
+                        <li>
+                            IT IS A CHRISTIAN REQUIREMENT - EPH 4:1-2, 2 COR
+                            12:6
+                            <button
+                                class="read-scripture"
+                                data-ref="Ephesians 4:1-2"
+                            >
+                                Read Eph. 4:1-2
+                            </button>
+                            <button
+                                class="read-scripture"
+                                data-ref="2 Corinthians 12:6"
+                            >
+                                Read 2 Cor. 12:6
+                            </button>
+                        </li>
+                        <li>
+                            IT GIVES ROOM FOR REPENTANCE - ROM 2:4
+                            <button
+                                class="read-scripture"
+                                data-ref="Romans 2:4"
+                            >
+                                Read Rom. 2:4
+                            </button>
+                        </li>
+                        <li>
+                            IT KEEPS RELATIONSHIP - PROV 17:9
+                            <button
+                                class="read-scripture"
+                                data-ref="Proverbs 17:9"
+                            >
+                                Read Prov. 17:9
+                            </button>
+                        </li>
+                        <li>
+                            IT REVEALS A PERSON - MATT 7:20, TITUS 2:7-8, 2 PET
+                            3:1-2
+                            <button
+                                class="read-scripture"
+                                data-ref="Matthew 7:20"
+                            >
+                                Read Matt. 7:20
+                            </button>
+                            <button
+                                class="read-scripture"
+                                data-ref="Titus 2:7-8"
+                            >
+                                Read Titus 2:7-8
+                            </button>
+                            <button
+                                class="read-scripture"
+                                data-ref="2 Peter 3:1-2"
+                            >
+                                Read 2 Pet. 3:1-2
+                            </button>
+                        </li>
+                        <li>
+                            IT AVOIDS CRISIS - PROV. 15:18, 16:32, 20:3
+                            <button
+                                class="read-scripture"
+                                data-ref="Proverbs 15:18"
+                            >
+                                Read Prov. 15:18
+                            </button>
+                            <button
+                                class="read-scripture"
+                                data-ref="Proverbs 16:32"
+                            >
+                                Read Prov. 16:32
+                            </button>
+                            <button
+                                class="read-scripture"
+                                data-ref="Proverbs 20:3"
+                            >
+                                Read Prov. 20:3
+                            </button>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="content" id="application">
+                    <h2>CONCLUSION</h2>
+                    <p>
+                        FOR YOU THAT SAY "I DON'T TOLERATE NONSENSE", GOD IS
+                        SAYING THAT YOU MAY NOT TOLERATE THE NONSENSE BUT
+                        TOLERATE THE PERSON. IF GOD HAD'NT TOLERATED YOU, YOU
+                        WOULD BE IN THE FIRE OF HELL BY NOW - ROM 3:25.
+                    </p>
+
+                    <button class="read-scripture" data-ref="Romans 3:25">
+                        Read Rom. 3:25
+                    </button>
+
+                    <p>
+                        TOLERATE ONE ANOTHER FOR THERE IS ONLY ONE JUDGE WHO IS
+                        IN HEAVEN BEFORE WHOM WE ALL STAND.
+                    </p>
+
+                    <div class="interactive-section">
+                        <h2>Personal Reflection</h2>
+                        <p>
+                            Take a moment to reflect on how you can apply the
+                            lesson of forbearance in your daily life:
+                        </p>
+                        <textarea
+                            class="reflection-input"
+                            placeholder="Write your personal reflection here..."
+                        ></textarea>
+                        <button class="save-reflection">Save Reflection</button>
+                        <p class="saved-message">Reflection saved!</p>
+                    </div>
+
+                    <div class="prayer-points">
+                        <h2>Prayer Points</h2>
+                        <ol>
+                            <li>
+                                Lord, help me to develop the spirit of
+                                forbearance in my daily walk with You.
+                            </li>
+                            <li>
+                                Father, give me the grace to tolerate others as
+                                You have tolerated me.
+                            </li>
+                            <li>
+                                Help me to reflect Your character of forbearance
+                                in all my relationships.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="content" id="quiz">
+                    <h2>Test Your Understanding</h2>
+                    <div class="quiz-container">
+                        <div class="question">
+                            <p>1. What is another word for forbearance?</p>
+                            <div class="options">
+                                <div class="option" data-correct="true">
+                                    Tolerance
+                                </div>
+                                <div class="option">Anger</div>
+                                <div class="option">Impatience</div>
+                                <div class="option">Weakness</div>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <p>2. According to the lesson, forbearance is:</p>
+                            <div class="options">
+                                <div class="option">
+                                    Accepting only what is pleasant
+                                </div>
+                                <div class="option" data-correct="true">
+                                    Accepting an unpleasant person without
+                                    complaining
+                                </div>
+                                <div class="option">
+                                    Avoiding difficult people
+                                </div>
+                                <div class="option">
+                                    Complaining about difficult situations
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <p>
+                                3. Which of these is NOT listed as a necessity
+                                for forbearance?
+                            </p>
+                            <div class="options">
+                                <div class="option">
+                                    It is a Christian requirement
+                                </div>
+                                <div class="option">
+                                    It gives room for repentance
+                                </div>
+                                <div class="option">It keeps relationship</div>
+                                <div class="option" data-correct="true">
+                                    It makes you popular
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <p>
+                                4. According to Proverbs 25:15, what breaks the
+                                bone?
+                            </p>
+                            <div class="options">
+                                <div class="option">A hard heart</div>
+                                <div class="option" data-correct="true">
+                                    A soft tongue
+                                </div>
+                                <div class="option">A loud voice</div>
+                                <div class="option">An angry spirit</div>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <p>5. The main aim of this lesson is:</p>
+                            <div class="options">
+                                <div class="option" data-correct="true">
+                                    To draw attention to the need for change of
+                                    character
+                                </div>
+                                <div class="option">
+                                    To teach about church history
+                                </div>
+                                <div class="option">
+                                    To explain biblical geography
+                                </div>
+                                <div class="option">
+                                    To discuss church doctrines
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="submit-quiz">Submit Answers</button>
+                        <div class="quiz-result"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scripture-modal" id="scriptureModal">
+            <div class="scripture-content">
+                <span class="close-modal">&times;</span>
+                <h3 id="scriptureTitle"></h3>
+                <p id="scriptureText"></p>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container">
+                <p>
+                    &copy; 2025 Sunday School App | The Real Christian Clothing
+                    Series
+                </p>
+            </div>
+        </footer>
+
+        <script>
+            // Scripture verses database
+            const scriptures = {
+                "1 Corinthians 13:11":
+                    "When I was a child, I spake as a child, I understood as a child, I thought as a child: but when I became a man, I put away childish things.",
+                "Matthew 3:8":
+                    "Bring forth therefore fruits meet for repentance.",
+                "2 Corinthians 5:17":
+                    "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new.",
+                "Galatians 5:25":
+                    "If we live in the Spirit, let us also walk in the Spirit.",
+                "Habakkuk 1:13":
+                    "Thou art of purer eyes than to behold evil, and canst not look on iniquity: wherefore lookest thou upon them that deal treacherously, and holdest thy tongue when the wicked devoureth the man that is more righteous than he?",
+                "Romans 5:8":
+                    "But God commendeth his love toward us, in that, while we were yet sinners, Christ died for us.",
+                "Revelation 3:20":
+                    "Behold, I stand at the door, and knock: if any man hear my voice, and open the door, I will come in to him, and will sup with him, and he with me.",
+                "Ephesians 4:1-2":
+                    "I therefore, the prisoner of the Lord, beseech you that ye walk worthy of the vocation wherewith ye are called, With all lowliness and meekness, with longsuffering, forbearing one another in love.",
+                "2 Corinthians 12:6":
+                    "For though I would desire to glory, I shall not be a fool; for I will say the truth: but now I forbear, lest any man should think of me above that which he seeth me to be, or that he heareth of me.",
+                "Romans 2:4":
+                    "Or despisest thou the riches of his goodness and forbearance and longsuffering; not knowing that the goodness of God leadeth thee to repentance?",
+                "Proverbs 17:9":
+                    "He that covereth a transgression seeketh love; but he that repeateth a matter separateth very friends.",
+                "Matthew 7:20": "Wherefore by their fruits ye shall know them.",
+                "Titus 2:7-8":
+                    "In all things shewing thyself a pattern of good works: in doctrine shewing uncorruptness, gravity, sincerity, Sound speech, that cannot be condemned; that he that is of the contrary part may be ashamed, having no evil thing to say of you.",
+                "2 Peter 3:1-2":
+                    "This second epistle, beloved, I now write unto you; in both which I stir up your pure minds by way of remembrance: That ye may be mindful of the words which were spoken before by the holy prophets, and of the commandment of us the apostles of the Lord and Saviour.",
+                "Proverbs 15:18":
+                    "A wrathful man stirreth up strife: but he that is slow to anger appeaseth strife.",
+                "Proverbs 16:32":
+                    "He that is slow to anger is better than the mighty; and he that ruleth his spirit than he that taketh a city.",
+                "Proverbs 20:3":
+                    "It is an honour for a man to cease from strife: but every fool will be meddling.",
+                "Romans 3:25":
+                    "Whom God hath set forth to be a propitiation through faith in his blood, to declare his righteousness for the remission of sins that are past, through the forbearance of God.",
+            };
+
+            // Tab functionality
+            document.querySelectorAll(".tab").forEach((tab) => {
+                tab.addEventListener("click", () => {
+                    // Remove active class from all tabs and content
+                    document
+                        .querySelectorAll(".tab")
+                        .forEach((t) => t.classList.remove("active"));
+                    document
+                        .querySelectorAll(".content")
+                        .forEach((c) => c.classList.remove("active"));
+
+                    // Add active class to clicked tab
+                    tab.classList.add("active");
+
+                    // Show corresponding content
+                    const tabId = tab.getAttribute("data-tab");
+                    document.getElementById(tabId).classList.add("active");
+                });
+            });
+
+            // Scripture modal functionality
+            const modal = document.getElementById("scriptureModal");
+            const scriptureTitle = document.getElementById("scriptureTitle");
+            const scriptureText = document.getElementById("scriptureText");
+            const closeModal = document.querySelector(".close-modal");
+
+            document.querySelectorAll(".read-scripture").forEach((button) => {
+                button.addEventListener("click", () => {
+                    const reference = button.getAttribute("data-ref");
+                    scriptureTitle.textContent = reference;
+                    scriptureText.textContent =
+                        scriptures[reference] ||
+                        "Scripture text not available.";
+                    modal.style.display = "block";
+                });
+            });
+
+            closeModal.addEventListener("click", () => {
+                modal.style.display = "none";
+            });
+
+            window.addEventListener("click", (e) => {
+                if (e.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+
+            // Quiz functionality
+            document.querySelectorAll(".option").forEach((option) => {
+                option.addEventListener("click", () => {
+                    // Deselect other options in the same question
+                    const questionOptions = option
+                        .closest(".options")
+                        .querySelectorAll(".option");
+                    questionOptions.forEach((opt) =>
+                        opt.classList.remove("selected")
+                    );
+
+                    // Select this option
+                    option.classList.add("selected");
+                });
+            });
+
+            document
+                .querySelector(".submit-quiz")
+                .addEventListener("click", () => {
+                    let score = 0;
+                    const questions = document.querySelectorAll(".question");
+                    const result = document.querySelector(".quiz-result");
+
+                    questions.forEach((question) => {
+                        const selectedOption =
+                            question.querySelector(".option.selected");
+                        if (
+                            selectedOption &&
+                            selectedOption.getAttribute("data-correct") ===
+                                "true"
+                        ) {
+                            score++;
+                        }
+                    });
+
+                    const percentage = (score / questions.length) * 100;
+                    result.textContent = `You scored ${score} out of ${questions.length} (${percentage}%)`;
+                    result.style.display = "block";
+
+                    if (percentage >= 80) {
+                        result.style.backgroundColor = "#d4edda";
+                        result.style.color = "#155724";
+                    } else if (percentage >= 60) {
+                        result.style.backgroundColor = "#fff3cd";
+                        result.style.color = "#856404";
+                    } else {
+                        result.style.backgroundColor = "#f8d7da";
+                        result.style.color = "#721c24";
+                    }
+                });
+
+            // Save reflection functionality - using in-memory storage instead of localStorage
+            let savedReflection = "";
+
+            document
+                .querySelector(".save-reflection")
+                .addEventListener("click", () => {
+                    const reflection =
+                        document.querySelector(".reflection-input").value;
+                    if (reflection.trim() !== "") {
+                        // Save to variable (in-memory storage)
+                        savedReflection = reflection;
+
+                        // Show saved message
+                        document.querySelector(".saved-message").style.display =
+                            "block";
+
+                        // Hide message after 3 seconds
+                        setTimeout(() => {
+                            document.querySelector(
+                                ".saved-message"
+                            ).style.display = "none";
+                        }, 3000);
+                    }
+                });
+
+            // Note: Since we can't use localStorage in this environment,
+            // reflections will only persist during the current session
+        </script>
+    </body>
+</html>
